@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Micah Branton — Western Regional Assistant Vice-President</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #000000;
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --white: #FAFAF7;
+    --gray: #888880;
+    --mid: #1a1a1a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 400; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(0,0,0,0.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid #B8860B33;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.04em; text-decoration: none; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); text-decoration: none; opacity: 0.75; transition: opacity 0.2s, color 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  .nav-cta { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; background: var(--gold); color: var(--black); border: none; padding: 0.65rem 1.6rem; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 140px 6vw 80px 8vw; position: relative; z-index: 2; }
+  .hero-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.8rem; animation: fadeUp 0.7s ease both 0.1s; }
+  .hero-tag::before { content: ''; display: block; width: 40px; height: 2px; background: var(--gold); }
+  .hero-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(3rem, 5.5vw, 5.2rem); line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 2rem; animation: fadeUp 0.7s ease both 0.25s; }
+  .hero-title em { font-style: normal; color: var(--gold); display: block; }
+  .hero-sub { font-size: 1.05rem; font-weight: 300; line-height: 1.7; color: #ccc; max-width: 440px; margin-bottom: 3rem; animation: fadeUp 0.7s ease both 0.4s; }
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; animation: fadeUp 0.7s ease both 0.55s; }
+  .btn-primary { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; background: var(--gold); color: var(--black); border: none; padding: 1rem 2.4rem; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; background: transparent; color: var(--white); border: 1px solid #ffffff44; padding: 1rem 2.4rem; cursor: pointer; transition: border-color 0.2s, color 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-right { position: relative; overflow: hidden; }
+  .hero-img-wrap { position: absolute; inset: 0; background: linear-gradient(135deg, #111 0%, #1a1500 100%); }
+  .hero-img-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 60% 50%, #B8860B18 0%, transparent 70%), repeating-linear-gradient(45deg, transparent, transparent 40px, #B8860B08 40px, #B8860B08 41px); z-index: 1; }
+  .hero-img-wrap::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 120px; background: linear-gradient(to right, var(--black), transparent); z-index: 2; }
+  .hero-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Playfair Display', serif; font-weight: 900; font-size: 8vw; color: #B8860B10; letter-spacing: 0.2em; z-index: 1; white-space: nowrap; pointer-events: none; }
+  .hero-name-badge { position: absolute; bottom: 2.5rem; right: 2rem; z-index: 4; text-align: right; }
+  .hero-name-badge .name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--white); line-height: 1.1; }
+  .hero-name-badge .position { font-family: 'Barlow Condensed', sans-serif; font-size: 0.73rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 0.4rem; max-width: 260px; text-align: right; line-height: 1.6; }
+
+  /* MARQUEE */
+  .marquee-strip { background: var(--gold); padding: 0.9rem 0; overflow: hidden; white-space: nowrap; }
+  .marquee-inner { display: inline-block; animation: marquee 32s linear infinite; }
+  .marquee-inner span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); margin: 0 2.2rem; }
+  .marquee-inner span::before { content: '◆ '; opacity: 0.5; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTION COMMON */
+  section { padding: 7rem 8vw; }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-label::before { content: ''; display: block; width: 32px; height: 2px; background: var(--gold); }
+  .section-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+
+  /* ABOUT */
+  .about { background: var(--mid); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6vw; align-items: center; }
+  .about-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 700; line-height: 1.35; color: var(--white); padding-left: 2rem; border-left: 3px solid var(--gold); }
+  .about-slogan { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--gold); margin-top: 2rem; line-height: 1.2; letter-spacing: -0.01em; }
+  .about-body { font-size: 0.97rem; font-weight: 300; line-height: 1.85; color: #bbb; }
+  .about-body p + p { margin-top: 1.2rem; }
+  .about-body strong { color: var(--gold); font-weight: 500; }
+
+  /* PLATFORM */
+  .platform-section { background: var(--black); }
+  .brother-hero { text-align: center; margin-bottom: 5rem; }
+  .brother-word { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(3.5rem, 9vw, 8rem); letter-spacing: 0.15em; color: #B8860B44; line-height: 1; }
+  .brother-word .lit { color: var(--gold); }
+  .brother-sub-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); margin-top: 1.2rem; line-height: 1.9; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1px; background: #B8860B18; }
+  .platform-card { background: var(--black); padding: 2.6rem 2.2rem; border: 1px solid #ffffff06; transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+  .platform-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease; }
+  .platform-card:hover { background: #0c0c0c; border-color: #B8860B33; }
+  .platform-card:hover::after { width: 100%; }
+  .p-letter { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3.5rem; color: var(--gold); opacity: 0.22; line-height: 1; margin-bottom: 0.4rem; transition: opacity 0.3s; }
+  .platform-card:hover .p-letter { opacity: 0.5; }
+  .p-word { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+  .p-desc { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: #aaa; }
+
+  /* CONNECT */
+  .connect-section { background: var(--mid); }
+  .connect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .connect-card { border: 1px solid #ffffff10; padding: 2.2rem 2rem; display: flex; align-items: center; gap: 1.5rem; text-decoration: none; transition: border-color 0.25s, background 0.25s, transform 0.2s; }
+  .connect-card:hover { border-color: var(--gold); background: #0d0d0d; transform: translateY(-3px); }
+  .connect-icon { width: 52px; height: 52px; border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); }
+  .connect-icon svg { width: 22px; height: 22px; fill: currentColor; }
+  .connect-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); }
+  .connect-handle { font-size: 0.82rem; font-weight: 300; color: var(--gray); margin-top: 0.25rem; }
+
+  /* DONATE */
+  .donate-section { background: var(--gold); padding: 7rem 8vw; text-align: center; }
+  .donate-section .section-label { justify-content: center; color: #2a1800; }
+  .donate-section .section-label::before { background: #2a1800; }
+  .donate-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1; color: var(--black); margin-bottom: 1.2rem; }
+  .donate-sub { font-size: 1rem; font-weight: 400; color: #2a1800; line-height: 1.7; max-width: 560px; margin: 0 auto 2.8rem; }
+  .donate-big-btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; background: var(--black); color: var(--gold); border: none; padding: 1.3rem 4rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; }
+  .donate-big-btn:hover { background: #1a1a1a; transform: translateY(-3px); }
+
+  /* FOOTER */
+  footer { background: #050505; padding: 4rem 8vw 2.5rem; border-top: 1px solid #B8860B33; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .footer-brand .name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); }
+  .footer-brand .tagline { font-size: 0.75rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); margin-top: 0.4rem; line-height: 1.6; }
+  .footer-links h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .footer-links ul { list-style: none; }
+  .footer-links li + li { margin-top: 0.6rem; }
+  .footer-links a { font-size: 0.88rem; font-weight: 300; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid #ffffff0d; padding-top: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { font-size: 0.78rem; font-weight: 300; color: #555; }
+  .social-row { display: flex; gap: 1rem; }
+  .social-link { width: 40px; height: 40px; border: 1px solid #ffffff18; display: flex; align-items: center; justify-content: center; color: var(--gray); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+  .social-link svg { width: 17px; height: 17px; fill: currentColor; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 360px; }
+    .hero-left { padding: 120px 7vw 60px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 5rem 6vw; }
+    .donate-section { padding: 5rem 6vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Micah Branton</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#platform">BROTHER</a></li>
+    <li><a href="#connect">Connect</a></li>
+    <li><a href="#donate">Support</a></li>
+  </ul>
+  <a href="https://ko-fi.com/micah4wravp" target="_blank" rel="noopener" class="nav-cta">Support Micah</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-tag">Western Regional Assistant Vice-President</div>
+    <h1 class="hero-title">
+      Built on<br>
+      <em>Brotherhood.</em>
+    </h1>
+    <p class="hero-sub">Micah Branton is committed to uniting the Western Region through service, opportunity, and a platform rooted in the values that define us as brothers.</p>
+    <div class="hero-actions">
+      <a href="https://ko-fi.com/micah4wravp" target="_blank" rel="noopener" class="btn-primary">Support the Campaign</a>
+      <a href="#platform" class="btn-outline">The BROTHER Platform</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap"></div>
+    <div class="hero-watermark">BROTHER</div>
+    <div class="hero-name-badge">
+      <div class="name">Micah<br>Branton</div>
+      <div class="position">Candidate for Western Regional<br>Assistant Vice-President</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Brotherhood</span><span>Regional Engagement</span><span>Opportunity</span><span>Thrive Financially</span><span>Honor the Legacy</span><span>Exposure</span><span>Reach Through Service</span>
+    <span>Brotherhood</span><span>Regional Engagement</span><span>Opportunity</span><span>Thrive Financially</span><span>Honor the Legacy</span><span>Exposure</span><span>Reach Through Service</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About the Candidate</div>
+  <div class="about-grid">
+    <div>
+      <blockquote class="about-quote">
+        "Be a BROTHER,vote for Branton."
+    <div class="about-body">
+      <p>Micah Branton is a dedicated leader, servant, and brother who has committed himself to uplifting the Western Region through intentional action and unwavering brotherhood.</p>
+      <p>His campaign is anchored in one word: <strong>BROTHER</strong> — an acronym that captures his full vision for the region: Brotherhood, Regional Engagement, Opportunity, Thriving Financially, Honoring the Legacy, Exposure, and Reaching Through Service.</p>
+      <p>Micah believes real leadership means showing up, connecting members, and building structures that give every brother in the Western Region the resources and visibility they need to succeed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BROTHER PLATFORM -->
+<section class="platform-section" id="platform">
+  <div class="section-label">The Platform</div>
+  <h2 class="section-title">What BROTHER Stands For</h2>
+
+  <div class="brother-hero">
+    <div class="brother-word">
+      <span class="lit">B</span>R<span class="lit">O</span>T<span class="lit">H</span>E<span class="lit">R</span>
+    </div>
+    <div class="brother-sub-label">
+      Brotherhood &nbsp;·&nbsp; Regional Engagement &nbsp;·&nbsp; Opportunity &nbsp;·&nbsp; Thrive Financially<br>
+      Honor the Legacy &nbsp;·&nbsp; Exposure &nbsp;·&nbsp; Reach Through Service
+    </div>
+  </div>
+
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="p-letter">B</div>
+      <div class="p-word">Brotherhood</div>
+      <p class="p-desc">Connect brothers across all generations and levels of engagement. Reclaim inactive brothers through intentional outreach and reintegration. Strengthen retention through meaningful connection and involvement.</p>
+    </div>
+    <div class="platform-card">
+      <div class="p-letter">R</div>
+      <div class="p-word">Regional Engagement</div>
+      <p class="p-desc">Coordinate collaboration between the region and chapters. Organize regional events that unify members in person and virtually. Build consistent participation across geographic areas.</p>
+    </div>
+    <div class="platform-card">
+      <div class="p-letter">O</div>
+      <div class="p-word">Opportunity</div>
+      <p class="p-desc">Create career, leadership, and business opportunities for brothers and chapters. Connect chapters to partnerships, collaborations, and external resources. Turn internal networks into pathways for growth and advancement.</p>
+    </div>
+    <div class="platform-card">
+      <div class="p-letter">T</div>
+      <div class="p-word">Thrive Financially</div>
+      <p class="p-desc">Generate revenue streams to directly support chapter operations. Promote partnerships, sponsorships, and fundraising initiatives. Equip chapters with tools to sustain and grow financially.</p>
+    </div>
+    <div class="platform-card">
+      <div class="p-letter">H</div>
+      <div class="p-word">Honor the Legacy</div>
+      <p class="p-desc">Preserve traditions and historical identity of the brotherhood. Recognize past contributions and leadership impact. Reinforce values that guide future generations.</p>
+    </div>
+    <div class="platform-card">
+      <div class="p-letter">E</div>
+      <div class="p-word">Exposure</div>
+      <p class="p-desc">Showcase member achievements and ventures. Increase visibility of chapters, events, and initiatives. Create platforms for skills, talent, and leadership recognition.</p>
+    </div>
+    <div class="platform-card">
+      <div class="p-letter">R</div>
+      <div class="p-word">Reach Through Service</div>
+      <p class="p-desc">Organize coordinated regional service initiatives. Establish signature service events at the regional level. Strengthen community relationships through consistent engagement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect-section" id="connect">
+  <div class="section-label">Stay Connected</div>
+  <h2 class="section-title">Follow the Movement</h2>
+  <div class="connect-grid">
+    <a class="connect-card" href="https://www.instagram.com/micah4wravp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
+      <div class="connect-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </div>
+      <div>
+        <div class="connect-label">Instagram</div>
+        <div class="connect-handle">@micah4wravp</div>
+      </div>
+    </a>
+    <a class="connect-card" href="https://www.linkedin.com/in/mbranto" target="_blank" rel="noopener">
+      <div class="connect-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div>
+        <div class="connect-label">LinkedIn</div>
+        <div class="connect-handle">linkedin.com/in/mbranto</div>
+      </div>
+    </a>
+    <a class="connect-card" href="https://ko-fi.com/micah4wravp" target="_blank" rel="noopener">
+      <div class="connect-icon">
+        <svg viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 2.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.558c0 1.021-.696 2.017-2.059 2.095z"/></svg>
+      </div>
+      <div>
+        <div class="connect-label">Support on Ko-fi</div>
+        <div class="connect-handle">ko-fi.com/micah4wravp</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="donate-section" id="donate">
+  <div class="section-label">Support the Campaign</div>
+  <h2 class="donate-title">Invest in the<br>BROTHER Vision</h2>
+  <p class="donate-sub">Your support fuels the movement — helping Micah connect with members across the Western Region and bring every pillar of the BROTHER platform to life.</p>
+  <a href="https://ko-fi.com/micah4wravp" target="_blank" rel="noopener" class="donate-big-btn">Donate on Ko-fi &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="name">Micah Branton</div>
+      <div class="tagline">Western Regional<br>Assistant Vice-President</div>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Micah</a></li>
+        <li><a href="#platform">BROTHER Platform</a></li>
+        <li><a href="#connect">Connect</a></li>
+        <li><a href="#donate">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>The Platform</h4>
+      <ul>
+        <li><a href="#platform">Brotherhood</a></li>
+        <li><a href="#platform">Regional Engagement</a></li>
+        <li><a href="#platform">Opportunity</a></li>
+        <li><a href="#platform">Thrive Financially</a></li>
+        <li><a href="#platform">Honor the Legacy</a></li>
+        <li><a href="#platform">Exposure</a></li>
+        <li><a href="#platform">Reach Through Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Social &amp; Donate</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/micah4wravp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/mbranto" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://ko-fi.com/micah4wravp" target="_blank" rel="noopener">Ko-fi (Donate)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; Micah Branton for Western Regional Assistant Vice-President &nbsp;&middot;&nbsp; Paid for by the Branton Campaign</p>
+    <div class="social-row">
+      <a class="social-link" href="https://www.instagram.com/micah4wravp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a class="social-link" href="https://www.linkedin.com/in/mbranto" target="_blank" rel="noopener" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a class="social-link" href="https://ko-fi.com/micah4wravp" target="_blank" rel="noopener" title="Ko-fi">
+        <svg viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 2.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.558c0 1.021-.696 2.017-2.059 2.095z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.platform-card, .connect-card').forEach((el, i) => {
+    el.style.cssText += `opacity:0; transform:translateY(22px); transition: opacity 0.55s ease ${i * 0.07}s, transform 0.55s ease ${i * 0.07}s, background 0.3s, border-color 0.3s;`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
